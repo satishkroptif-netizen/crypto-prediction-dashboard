@@ -1,0 +1,10 @@
+{
+  "/page": "app/page.js",
+  "/api/commodity-price/route": "app/api/commodity-price/route.js",
+  "/scanner/page": "app/scanner/page.js",
+  "/login/page": "app/login/page.js",
+  "/signup/page": "app/signup/page.js",
+  "/api/predictions/route": "app/api/predictions/route.js",
+  "/api/flow/route": "app/api/flow/route.js",
+  "/asset/[symbol]/page": "app/asset/[symbol]/page.js"
+}
