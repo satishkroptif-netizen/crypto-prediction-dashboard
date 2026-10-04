@@ -1,0 +1,6 @@
+# Deploy ONLY the Next.js web app — ignore the other services in this repo
+mobile
+trading-bot
+node_modules
+.next
+*.tsbuildinfo
