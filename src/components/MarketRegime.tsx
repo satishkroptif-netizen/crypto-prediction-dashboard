@@ -18,7 +18,7 @@ export default function MarketRegime() {
   }, []);
 
   const v = fng?.value ?? 50;
-  const risk = v < 25 ? { label: 'Extreme Fear — Contrarian bid zone', color: '#22c55e', pct: 18 } : v < 45 ? { label: 'Risk-off — Defensive', color: '#eab308', pct: 38 } : v <= 65 ? { label: 'Neutral — Balanced regime', color: '#818cf8', pct: 58 } : v <= 80 ? { label: 'Risk-on — Greed regime', color: '#4ade80', pct: 78 } : { label: 'Euphoria — Reduce risk', color: '#ef4444', pct: 92 };
+  const risk = v < 25 ? { label: 'Extreme Fear — Contrarian bid zone', color: '#22c55e', pct: 18 } : v < 45 ? { label: 'Risk-off — Defensive', color: '#eab308', pct: 38 } : v <= 65 ? { label: 'Neutral — Balanced regime', color: '#d4af37', pct: 58 } : v <= 80 ? { label: 'Risk-on — Greed regime', color: '#4ade80', pct: 78 } : { label: 'Euphoria — Reduce risk', color: '#ef4444', pct: 92 };
 
   return (
     <div className="ws-page">
