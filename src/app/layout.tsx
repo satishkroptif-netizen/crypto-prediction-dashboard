@@ -3,8 +3,8 @@ import './globals.css';
 import { AppProvider } from '@/lib/store';
 
 export const metadata: Metadata = {
-  title: 'GnC Signal Workspace — Crypto, Gold, Silver & Oil Predictions',
-  description: 'Realtime 15m/1h/4h/1D predictions on Crypto, Metals & Crude with TradingView charts, Verdict Scanner, Market Regime, News Intelligence, Flow & Derivatives and Economic Calendar.',
+  title: 'GnC Signal — Crypto, Gold, Silver & Oil Predictions',
+  description: 'AI-powered verdicts with entry, stop and targets on crypto, metals and crude. One free verdict — sign up free to unlock all timeframes.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
