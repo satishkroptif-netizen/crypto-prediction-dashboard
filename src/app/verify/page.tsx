@@ -17,7 +17,7 @@ function VerifyInner() {
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault(); setErr(null); setBusy(true);
-    try { await verifyOtp(email, code); router.push('/'); }
+    try { await verifyOtp(email, code); router.push('/workspace'); }
     catch (e) { setErr(e instanceof Error ? e.message : 'Invalid code'); }
     setBusy(false);
   };
