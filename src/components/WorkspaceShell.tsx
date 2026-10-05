@@ -82,7 +82,7 @@ export default function WorkspaceShell({ active, children }: { active: TabKey; c
           </div>
           <nav className="side-nav">
             {TABS.map(t => (
-              <Link key={t.key} href={t.key === 'dashboard' ? '/' : `/${t.key}`} onClick={() => setMobileOpen(false)}
+              <Link key={t.key} href={t.key === 'dashboard' ? '/workspace' : `/${t.key}`} onClick={() => setMobileOpen(false)}
                 className={`side-link ${active === t.key ? 'active' : ''}`}>
                 <span className="side-ico">{t.icon}</span>
                 <span className="side-txt"><strong>{t.label}</strong><small>{t.desc}</small></span>
@@ -146,7 +146,7 @@ export default function WorkspaceShell({ active, children }: { active: TabKey; c
       {/* mobile bottom nav */}
       <nav className="ws-bottomnav">
         {TABS.map(t => (
-          <Link key={t.key} href={t.key === 'dashboard' ? '/' : `/${t.key}`} className={active === t.key ? 'active' : ''}>
+          <Link key={t.key} href={t.key === 'dashboard' ? '/workspace' : `/${t.key}`} className={active === t.key ? 'active' : ''}>
             <span>{t.icon}</span><small>{t.label.split(' ')[0]}</small>
           </Link>
         ))}
