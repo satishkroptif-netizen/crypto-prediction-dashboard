@@ -17,7 +17,7 @@ export default function LoginPage() {
     e.preventDefault(); setErr(null); setBusy(true);
     try {
       await login(email, pw);
-      router.push('/');
+      router.push('/workspace');
     } catch (e) {
       const m = e instanceof Error ? e.message : 'Login failed';
       if (m === 'UNVERIFIED') router.push(`/verify?email=${encodeURIComponent(email.trim().toLowerCase())}`);
