@@ -76,7 +76,7 @@ export default function DerivativesPanel({ pair, symbol }: { pair: string; symbo
         <div className="deriv-cell">
           <span>Open Interest</span>
           <b>{usd(oih[oih.length - 1] || 0)}</b>
-          <Spark data={oih} color="#818cf8" fmt={usd} />
+          <Spark data={oih} color="#d4af37" fmt={usd} />
         </div>
         <div className="deriv-cell">
           <span>Long / Short Ratio</span>
