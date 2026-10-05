@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import './gold.css';
 import { AppProvider } from '@/lib/store';
 
 export const metadata: Metadata = {
