@@ -48,7 +48,7 @@ function Content() {
   return (
     <WorkspaceShell active="dashboard">
       <div className="ws-page asset-page">
-        <Link href="/" className="back-link">← Workspace</Link>
+        <Link href="/workspace" className="back-link">← Workspace</Link>
         <div className="page-head">
           <div className="asset-title-row">
             <span className="big-ico">{asset?.icon || '●'}</span>
