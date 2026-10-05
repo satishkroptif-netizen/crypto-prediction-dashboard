@@ -45,10 +45,10 @@ export default function FlowDerivatives() {
       </div>
       {loading ? <div className="loading-state"><div className="spinner" /><p>Loading derivatives flow…</p></div> : flow && (
         <div className="flow-grid">
-          <div className="card"><h3>Open Interest</h3><p className="big">{flow.openInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p><Spark data={oih} color="#818cf8" /><p className="muted-sm">{flow.live ? '● live' : '○ cached'} · contracts · 30h history</p></div>
+          <div className="card"><h3>Open Interest</h3><p className="big">{flow.openInterest.toLocaleString(undefined, { maximumFractionDigits: 0 })}</p><Spark data={oih} color="#d4af37" /><p className="muted-sm">{flow.live ? '● live' : '○ cached'} · contracts · 30h history</p></div>
           <div className="card"><h3>Funding Rate</h3><p className="big" style={{ color: flow.fundingRate > 0 ? '#4ade80' : '#f87171' }}>{(flow.fundingRate * 100).toFixed(4)}%</p><p className="muted-sm">{flow.fundingRate > 0.0005 ? 'Longs pay shorts — crowded' : flow.fundingRate < -0.0005 ? 'Shorts pay longs' : 'Neutral'}</p></div>
           <div className="card"><h3>Long/Short Ratio</h3><p className="big">{cur.toFixed(2)}</p><Spark data={ls} color={cur > 1 ? '#22c55e' : '#ef4444'} /></div>
-          <div className="card"><h3>Taker Buy/Sell</h3><p className="big">{(tk[tk.length - 1] || 1).toFixed(2)}</p><Spark data={tk} color="#818cf8" /><p className="muted-sm">{(tk[tk.length - 1] || 1) > 1 ? 'Taker buying dominates' : 'Taker selling dominates'}</p></div>
+          <div className="card"><h3>Taker Buy/Sell</h3><p className="big">{(tk[tk.length - 1] || 1).toFixed(2)}</p><Spark data={tk} color="#d4af37" /><p className="muted-sm">{(tk[tk.length - 1] || 1) > 1 ? 'Taker buying dominates' : 'Taker selling dominates'}</p></div>
           <div className="card">
             <h3>Liquidations (live {liq.connected ? '●' : '○'})</h3>
             <p className="big">{liq.count === 0 ? '—' : `$${Math.round(liqTotal).toLocaleString()}`}</p>
