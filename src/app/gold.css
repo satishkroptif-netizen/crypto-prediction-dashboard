@@ -1,0 +1,112 @@
+/* GnC Signal — gold theme overrides + mobile workspace restyle.
+   Loaded AFTER globals.css so these rules win. Old blue values remain
+   in globals.css but are fully superseded here. */
+
+:root {
+  --accent: #d4af37;
+  --accent-hover: #e9c25c;
+  --on-accent: #1a1405;
+}
+
+::selection { background: rgba(212, 175, 55, .35); }
+::-webkit-scrollbar-thumb { background: rgba(212, 175, 55, .25); }
+
+/* ── Solid gold fills need dark text ─────────────────────────── */
+.btn-primary { color: var(--on-accent); }
+.retry-btn { color: var(--on-accent); }
+.timeframe-tab.active { color: var(--on-accent); }
+.timeframe-tab.active .tab-label { color: rgba(26, 20, 5, .7); }
+.timeframe-pill.active { color: var(--on-accent); }
+.filter-btn.active { color: var(--on-accent); }
+.sym-tabs button.active { color: var(--on-accent); }
+.top-factor-rank { color: var(--on-accent); }
+.avatar { color: var(--on-accent); }
+.lp-step b { color: var(--on-accent); }
+
+/* ── Blue tints → gold tints ─────────────────────────────────── */
+.nav-link.active { background: rgba(212, 175, 55, .12); }
+.prediction-card:hover { border-color: rgba(212, 175, 55, .35); }
+.side-link.active { background: rgba(212, 175, 55, .13); border-color: rgba(212, 175, 55, .35); }
+.cal-date { background: rgba(212, 175, 55, .12); }
+.auth-wrap { background: radial-gradient(800px 400px at 50% -10%, rgba(212, 175, 55, .20), transparent), var(--bg-primary); }
+.trade-cell.entry b { color: #f3d27a; }
+.lp-root { background: radial-gradient(900px 420px at 50% -8%, rgba(212, 175, 55, .18), transparent), var(--bg-primary); }
+.lp-badge { border-color: rgba(212, 175, 55, .45); }
+.grad { background: linear-gradient(90deg, #f3d27a, #d4af37); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lp-card.link:hover { border-color: rgba(212, 175, 55, .4); }
+.lp-plan.hot { border-color: rgba(212, 175, 55, .55); }
+
+/* ── Mobile workspace glow-up ────────────────────────────────── */
+@media (max-width: 768px) {
+  .ws-main {
+    padding: 1rem 0.9rem 6rem;
+    background: radial-gradient(600px 200px at 50% 0, rgba(212, 175, 55, .09), transparent);
+  }
+
+  .page-head h1 { font-size: 1.4rem; }
+  .page-head p { font-size: 0.82rem; }
+
+  /* timeframe pills become a snap-scroll row */
+  .sym-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-width: 100%;
+    padding-bottom: 0.3rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sym-tabs button { flex: 0 0 auto; scroll-snap-align: start; }
+  .sym-tabs::-webkit-scrollbar { display: none; }
+
+  /* verdict KPI spans full width with gold wash */
+  .kpi-4 { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+  .kpi-4 > .card:first-child {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(212, 175, 55, .16), var(--bg-card) 70%);
+    border-color: rgba(212, 175, 55, .45);
+  }
+  .kpi-4 .k-big { font-size: 1.55rem; }
+  .kpi-4 .card { padding: 0.85rem 0.9rem; }
+
+  /* chart card pops */
+  .asset-page .chart-hero,
+  .dash-grid .chart-card {
+    padding: 0.7rem;
+    border-color: rgba(212, 175, 55, .32);
+    box-shadow: 0 0 28px rgba(212, 175, 55, .10);
+  }
+
+  /* prediction rows → premium cards */
+  .pred-row {
+    padding: 0.65rem 0.6rem 0.65rem 0.85rem;
+    border-radius: 14px;
+    background: linear-gradient(180deg, var(--bg-card), var(--bg-card-hover));
+  }
+  .p-price { font-size: 1.05rem; }
+  .p-sym { font-size: 0.95rem; }
+
+  /* market strip scrolls instead of wrapping */
+  .strip { flex-wrap: nowrap; overflow-x: auto; font-size: 0.8rem; }
+  .strip::-webkit-scrollbar { display: none; }
+
+  /* focus + factor chips */
+  .focus-bar { gap: 0.5rem; }
+  .focus-bar span:not(.verdict) { background: rgba(255, 255, 255, .05); padding: 0.3rem 0.65rem; border-radius: 20px; font-size: 0.78rem; }
+  .focus-bar .verdict { font-size: 1.1rem; }
+
+  .trade-cell b { font-size: 1.05rem; }
+  .deriv-cell > b { font-size: 1.35rem; }
+
+  /* scanner rows → stacked cards, header hidden */
+  .scan-table { background: none; border: none; overflow: visible; }
+  .scan-head { display: none; }
+  .scan-row {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-bottom: 0.55rem;
+  }
+
+  .card { padding: 0.95rem 1rem; }
+  .verdict-chip { font-size: 0.85rem; }
+}
