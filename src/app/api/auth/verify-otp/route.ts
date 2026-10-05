@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { appendFile, mkdir } from 'fs/promises';
 import { dirname } from 'path';
+import { checkOtp, otpConfigured } from '@/lib/otp';
 
 const otpStore = (global as unknown as { __pc_otp?: Map<string, { code: string; exp: number }> }).__pc_otp
   || ((global as unknown as { __pc_otp: Map<string, { code: string; exp: number }> }).__pc_otp = new Map());
@@ -34,11 +35,18 @@ export async function POST(req: NextRequest) {
   try {
     const { email, otp, name, phone } = await req.json();
     const key = String(email || '').toLowerCase();
-    const rec = otpStore.get(key);
-    if (!rec) return NextResponse.json({ error: 'No OTP found. Request a new code.' }, { status: 400 });
-    if (Date.now() > rec.exp) { otpStore.delete(key); return NextResponse.json({ error: 'OTP expired. Request a new code.' }, { status: 400 }); }
-    if (String(otp).trim() !== rec.code) return NextResponse.json({ error: 'Invalid OTP. Check the 6-digit code.' }, { status: 400 });
-    otpStore.delete(key);
+    if (otpConfigured()) {
+      // Stateless check — works across isolated serverless functions
+      if (!checkOtp(key, otp)) {
+        return NextResponse.json({ error: 'Invalid or expired code. Request a new code.' }, { status: 400 });
+      }
+    } else {
+      const rec = otpStore.get(key);
+      if (!rec) return NextResponse.json({ error: 'No OTP found. Request a new code.' }, { status: 400 });
+      if (Date.now() > rec.exp) { otpStore.delete(key); return NextResponse.json({ error: 'OTP expired. Request a new code.' }, { status: 400 }); }
+      if (String(otp).trim() !== rec.code) return NextResponse.json({ error: 'Invalid OTP. Check the 6-digit code.' }, { status: 400 });
+      otpStore.delete(key);
+    }
     // Log only verified signups (fake emails never reach the sheet/file)
     if (name && phone) {
       await logLead({ name: String(name), email: key, phone: String(phone), at: new Date().toISOString() });
