@@ -18,7 +18,7 @@ export default function AboutPage() {
           </div>
           <SearchDropdown />
           <nav className="main-nav">
-            <a href="/" className="nav-link">Dashboard</a>
+            <a href="/workspace" className="nav-link">Dashboard</a>
             <a href="/track-record" className="nav-link">Track Record</a>
             <a href="/about" className="nav-link active">About</a>
           </nav>
