@@ -111,7 +111,9 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
 
   const verifyOtp = useCallback(async (email: string, otp: string) => {
     email = email.trim().toLowerCase();
-    const r = await fetch('/api/auth/verify-otp', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, otp }) });
+    const all0 = load<User[]>(LS_USERS, []);
+    const pending = all0.find(u => u.email.toLowerCase() === email);
+    const r = await fetch('/api/auth/verify-otp', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, otp, name: pending?.name, phone: pending?.phone }) });
     const j = await r.json();
     if (!r.ok) throw new Error(j.error || 'Invalid OTP');
     const all = load<User[]>(LS_USERS, []);
